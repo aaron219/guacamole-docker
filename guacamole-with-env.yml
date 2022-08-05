@@ -1,0 +1,71 @@
+version: '3.7'
+
+services:
+ guacd:
+  image: guacamole/guacd
+  container_name: guacd
+  restart: always
+  networks:
+   - guac_network
+
+ guacamole:
+  image: guacamole/guacamole
+  container_name: guacamole
+  restart: always
+  depends_on:
+   - guacd
+   - mariadb
+###Enable for use extensions and custom guacamole configure
+#  volumes:
+#   - ./guacamole-data/extensions/:/opt/guacamole/extensions
+#   - ./guacamole-data/guacamole.properties:/opt/guacamole/guacamole.properties
+###Using env file to configure
+  env_file:
+   - ./guacamole-docker-env/guac-var.env
+  environment:
+   - MYSQL_HOSTNAME=mariadb
+   - MYSQL_DATABASE=guacamole
+   - GUACD_HOSTNAME=guacd
+   - GUACAMOLE_HOME=/opt/guacamole
+###Enable it, if no use nginx for ssl###
+#  ports:
+#   - 8000:8080
+  networks:
+   - guac_network
+
+ mariadb:
+  image: mariadb
+  container_name: guac-mariadb
+  restart: always
+  volumes:
+   - ./guacamole-data/mariadb/:/var/lib/mysql
+   - ./guacamole-data/initsql:/docker-entrypoint-initdb.d:z
+###Only enable it at first run (env_file)###
+  env_file:
+   - ./guacamole-docker-env/guac-db-var.env
+  networks:
+   - guac_network
+
+#################OPTIONAL#############################
+###Enable SSL Termination###
+
+ guac-nginx:
+  image: nginx:latest
+  container_name: guac-nginx
+  restart: always
+  volumes:
+   - ./guacamole-data/nginx/ssl/self.crt:/etc/nginx/ssl/self.crt:ro
+   - ./guacamole-data/nginx/ssl/self-ssl.key:/etc/nginx/ssl/self-ssl.key:ro
+   - ./guacamole-data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+   - ./guacamole-data/nginx/mysite:/etc/nginx/conf.d/default.conf:ro
+  ports:
+   - 5443:443
+  networks:
+   - guac_network
+  command: bash -c "nginx -g 'daemon off;'"
+
+#####################################################
+
+networks:
+ guac_network:
+  name: guac-app-network
