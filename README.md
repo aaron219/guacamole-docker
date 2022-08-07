@@ -2,6 +2,18 @@
 
 ---
 
+## Update
+
+- 2022/08/05
+
+> First version
+
+- 2022/08/07
+
+> Modify env file
+
+---
+
 ## Prerequistes
 
 > Before deploy apache guacamole, need to install the following
@@ -59,7 +71,7 @@ EX1. Enable TOTP and custom login page
 ...
 ```
 
-EX2. Use env file in yml (more security)
+EX2. Use env file in yml
 
 > Using the following command to replace step 3
 

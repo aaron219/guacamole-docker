@@ -21,7 +21,7 @@ services:
 #   - ./guacamole-data/guacamole.properties:/opt/guacamole/guacamole.properties
 ###Using env file to configure
   env_file:
-   - ./guacamole-docker-env/guac-var.env
+   - ./guacamole-docker-env/var-dbuser.env
   environment:
    - MYSQL_HOSTNAME=mariadb
    - MYSQL_DATABASE=guacamole
@@ -42,7 +42,8 @@ services:
    - ./guacamole-data/initsql:/docker-entrypoint-initdb.d:z
 ###Only enable it at first run (env_file)###
   env_file:
-   - ./guacamole-docker-env/guac-db-var.env
+   - ./guacamole-docker-env/var-dbroot.env
+   - ./guacamole-docker-env/var-dbuser.env
   networks:
    - guac_network
 

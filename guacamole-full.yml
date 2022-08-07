@@ -22,7 +22,7 @@ services:
 ###Using env file to configure
 ###Option 1###
   env_file:
-   - ./guacamole-docker-env/guac-var.env
+   - ./guacamole-docker-env/var-dbuser.env
   environment:
    - MYSQL_HOSTNAME=mariadb
    - MYSQL_DATABASE=guacamole
@@ -53,7 +53,8 @@ services:
 ###Only enable it at first run###
 ###Option 1###
   env_file:
-   - ./guacamole-docker-env/guac-db-var.env
+   - ./guacamole-docker-env/var-dbroot.env
+   - ./guacamole-docker-env/var-dbuser.env
 ###Option 2###
 #  environment:
 #   - MARIADB_ROOT_PASSWORD=mariadb123
