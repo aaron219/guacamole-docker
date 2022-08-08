@@ -95,6 +95,20 @@ https://[host_ip]:5443
 docker-compose -f guacamole-with-env.yml up -d
 ```
 
+## Remove containers and data
+
+1. Stop containers
+
+```
+docker-compose -f guacamole.yml down
+```
+
+2. Remove data
+
+```
+sudo rm -rf guacamole-data
+```
+
 ## Description
 
 - guacamole-docker-env
@@ -143,3 +157,4 @@ docker-compose -f guacamole-with-env.yml up -d
 > nginx -> 1.23.1
 
 > To be continue...
+> 
