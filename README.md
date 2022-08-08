@@ -6,7 +6,7 @@
 
 > 2022/08/08
 > 
->> Update Readme
+>> Update Readme, add nginx-default file
 > 
 > 2022/08/07
 >
@@ -134,5 +134,12 @@ docker-compose -f guacamole-with-env.yml up -d
 > create working directory and copy requried file to working directory
 
 ## Details
+
+### Container Current Version
+
+> guacd -> 1.4.0  
+> guacamole -> 1.4.0  
+> mariadb -> 10.8.3  
+> nginx -> 1.23.1
 
 > To be continue...
