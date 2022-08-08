@@ -4,19 +4,24 @@
 
 ## Update
 
-- 2022/08/05
-
-> First version
-
-- 2022/08/07
-
-> Modify env file
+> 2022/08/08
+> 
+>> Update Readme
+> 
+> 2022/08/07
+>
+>> Modify env file
+>
+> 2022/08/05
+> 
+>> First version
+>
 
 ---
 
 ## Prerequistes
 
-> Before deploy apache guacamole, need to install the following
+> Before deploy apache guacamole with docker, need to install the following
 
 ```
 openssl
@@ -50,7 +55,18 @@ git clone "https://github.com/aaron219/guacamole-docker.git"
 docker-compose -f guacamole.yml up -d
 ```
 
-EX1. Enable TOTP and custom login page
+4. Open browser and launch Guacamole
+
+> Default username: `guacadmin`  
+> Default password: `guacadmin`
+
+```
+https://[host_ip]:5443
+```
+
+## Deploy option
+
+1. Enable TOTP and custom login page
 
 > Uncomment out the following
 
@@ -71,7 +87,7 @@ EX1. Enable TOTP and custom login page
 ...
 ```
 
-EX2. Use env file in yml
+2. Use env file in yml
 
 > Using the following command to replace step 3
 
@@ -79,28 +95,33 @@ EX2. Use env file in yml
 docker-compose -f guacamole-with-env.yml up -d
 ```
 
-## Remark
+## Description
 
 - guacamole-docker-env
 
-> docker-compose env file
-> username and password for connect between guacamole and database
+> docker-compose env file  
+> 
+>> - database's root and password  
+>> - username and password which is connect between guacamole and database
 
 - guacamole-pre-file
 
-> extensions configure file and source file
-> TOTP and custom login page plugin
+> extensions configure file and source file  
+> 
+>> - TOTP  
+>> - custom login page  
+>
 > more plugin and how to configure -> https://guacamole.apache.org/releases/
 
 - guacamole.yml
 
-> docker-compose file
+> docker-compose file  
 > with ssl in nginx
 
 - guacamole-with-env.yml
 
-> docker-compose file
-> with ssl in nginx
+> docker-compose file  
+> with ssl in nginx  
 > with env file
 
 - nginx-default-file
@@ -109,9 +130,9 @@ docker-compose -f guacamole-with-env.yml up -d
 
 - perpare.sh
 
-> perpare script
+> perpare script  
 > create working directory and copy requried file to working directory
 
 ## Details
 
-> To be continue
+> To be continue...
