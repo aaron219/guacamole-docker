@@ -2,23 +2,6 @@
 
 ---
 
-## Update
-
-> 2022/08/08
-> 
->> Update Readme, add nginx-default file
-> 
-> 2022/08/07
->
->> Modify env file
->
-> 2022/08/05
-> 
->> First version
->
-
----
-
 ## Prerequistes
 
 > Before deploy apache guacamole with docker, need to install the following
@@ -29,6 +12,12 @@ git
 docker-ce
 docker-ce-cli
 docker-compose-plugin
+```
+
+> (option) Allow docker command without sudo
+
+```
+usermod -aG docker [username]
 ```
 
 ---
@@ -51,8 +40,16 @@ git clone "https://github.com/aaron219/guacamole-docker.git"
 
 3. Start Guacamole
 
+- `Method 1` : Deploy without env file
+
 ```
 docker-compose -f guacamole.yml up -d
+```
+
+- `Method 2` : Deploy with env file
+
+```
+docker-compose -f guacamole-with-env.yml up -d
 ```
 
 4. Open browser and launch Guacamole
@@ -64,11 +61,11 @@ docker-compose -f guacamole.yml up -d
 https://[host_ip]:5443
 ```
 
-## Deploy option
+## Deploy extensions (Option)
 
-1. Enable TOTP and custom login page
+### Enable TOTP and custom login page
 
-> Uncomment out the following
+> comment out the `volumes` (in `guacamole` services)
 
 ```
 ...
@@ -87,15 +84,7 @@ https://[host_ip]:5443
 ...
 ```
 
-2. Use env file in yml
-
-> Using the following command to replace step 3
-
-```
-docker-compose -f guacamole-with-env.yml up -d
-```
-
-## Remove containers and data
+## Remove containers and its data
 
 1. Stop containers
 
@@ -130,13 +119,12 @@ sudo rm -rf guacamole-data
 - guacamole.yml
 
 > docker-compose file  
-> with ssl in nginx
+> deploy with ssl in nginx
 
 - guacamole-with-env.yml
 
 > docker-compose file  
-> with ssl in nginx  
-> with env file
+> deploy with ssl in nginx and using env file
 
 - nginx-default-file
 
@@ -157,4 +145,26 @@ sudo rm -rf guacamole-data
 > nginx -> 1.23.1
 
 > To be continue...
+
+---
+
+## Update History
+
+> 2022/08/09
 > 
+>> Modify nginx configure file
+>
+> 2022/08/08
+> 
+>> Add nginx-default file
+> 
+> 2022/08/07
+>
+>> Modify env file
+>
+> 2022/08/05
+> 
+>> First version
+>
+
+---
