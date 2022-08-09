@@ -135,6 +135,21 @@ sudo rm -rf guacamole-data
 > perpare script  
 > create working directory and copy requried file to working directory
 
+## Setup Connection
+
+- For Windows 10 / Windows Server 2016
+
+> Set Authentifizierung -> Sicherheitsmodus to "NLA"  
+> Set Authentifizierung -> Serverzertifikat ignorieren with "Check"
+
+- For Linux (if openSSH ver. over 7.8)
+
+> Add the following in the end of ssh_config(/etc/ssh/ssh_config)
+
+```
+HostKeyAlgorithms +ssh-rsa
+```
+
 ## Details
 
 ### Container Current Version
