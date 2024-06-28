@@ -10,12 +10,13 @@ mkdir -p ./guacamole-data/extensions >/dev/null 2>&1 && mkdir -p ./guacamole-dat
 echo "done"
 echo "=========================================="
 
-# OPTION #
+# --- OPTION --- #
 echo "Copy OTP and custom login page extension configure and source file to working directory"
 cp ./guacamole-pre-file/extensions/* ./guacamole-data/extensions
 cp ./guacamole-pre-file/configurefile/* ./guacamole-data
 echo "done"
 echo "=========================================="
+# --- OPTION --- #
 
 echo "Copy default nginx file to guacamole working directory"
 cp ./nginx-default-configure/nginx.conf ./guacamole-data/nginx/
@@ -34,12 +35,13 @@ echo "=========================================="
 echo "Create SSL Cert"
 # create a cert and private key
 # -nodes = no des
+# -days = cert expiration day set to 365 days
 # -newkey = create a private key use rsa 2048
 # -new = create a cert use x509
 # -keyout = set private key output location and name
 # -out = set cert output location and name
 # -subj = set info of the cert
-openssl req -nodes -newkey rsa:2048 -new -x509 -keyout self-ssl.key -out self.crt -subj '/C=MO/ST=Macau/L=Macau/O=Local-test/OU=IT/CN=www.local-test.it/emailAddress=user@local-test.it'
+openssl req -nodes -days 365 -newkey rsa:2048 -new -x509 -keyout self-ssl.key -out self.crt -subj '/C=MO/ST=Macau/L=Macau/O=Local-test/OU=IT/CN=www.local-test.it/emailAddress=user@local-test.it'
 mv ./self* ./guacamole-data/nginx/ssl
 echo "done"
 echo "=========================================="
