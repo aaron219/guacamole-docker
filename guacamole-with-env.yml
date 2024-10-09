@@ -2,14 +2,14 @@ version: '3.7'
 
 services:
  guacd:
-  image: guacamole/guacd
+  image: guacamole/guacd:1.5.5
   container_name: guacd
   restart: always
   networks:
    - guac_network
 
  guacamole:
-  image: guacamole/guacamole
+  image: guacamole/guacamole:1.5.5
   container_name: guacamole
   restart: always
   depends_on:

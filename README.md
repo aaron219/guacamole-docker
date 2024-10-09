@@ -154,8 +154,8 @@ HostKeyAlgorithms +ssh-rsa
 
 ### Container Current Version
 
-> guacd -> 1.4.0  
-> guacamole -> 1.4.0  
+> guacd -> 1.5.5  
+> guacamole -> 1.5.5  
 > mariadb -> 10.8.3  
 > nginx -> 1.23.1
 
@@ -165,6 +165,11 @@ HostKeyAlgorithms +ssh-rsa
 
 ## Update History
 
+> 2024/10/09
+>
+>> Update guacamole version to 1.5.5
+>> Add quickconnect extension
+>
 > 2022/08/09
 > 
 >> Modify nginx configure file
